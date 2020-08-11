@@ -7,11 +7,33 @@ class Solution:
         
         if not citations:
             return 0
-    
-        h, len_cites = 0, len(citations) 
-        for i, cit_count in enumerate(citations):
-            h = max(h, min(len_cites - i, cit_count)) 
-        return h
 
-test_case = [1,2,3,4,5]
-answer = 3
+	citations.sort()
+    
+        H, cites_len = 0, len(citations) 
+        for i, cites_count in enumerate(citations):
+            H = max(H, min(cites_len - i, cites_count)) 
+        return H
+
+
+class SolutionSomeoneElse:
+    def hIndex(self, citations: List[int]) -> int:
+    	return sum(i < j for i, j in enumerate(sorted(citations, reverse=True)))
+
+
+class SolutionAnotherSomeone:
+    def hIndex(self, citations: List[int]) -> int:
+        citations.sort( reverse = True )
+        
+        # find first index where citation smaller or equal to array index            
+        for idx, citation in enumerate(citations):
+            if idx >= citation:
+                return idx
+        
+        return len(citations)
+
+testCase1 = [1,2,3,4,5]
+ans1 = 3
+
+testCase2 = [2,1]
+ans2 = 1
