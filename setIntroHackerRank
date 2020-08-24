@@ -1,0 +1,8 @@
+# want average to be sumDistinctHeights/totNumDistinctHeights
+
+def average(array):
+	return sum(set(array))/len(set(array))
+
+
+# notes on enumerate
+#print set(enumerate(['H','a','c','k'])
